@@ -4,6 +4,12 @@
 
   (paper "A4")
 
+  (title_block
+    (title "Pico Prototype Keyboard 65%")
+    (comment 1 "Ver 0.1")
+    (comment 2 "CC BY-SA 2.0")
+  )
+
   (lib_symbols
     (symbol "COM-09032_1" (pin_names (offset 1.016)) (in_bom yes) (on_board yes)
       (property "Reference" "U" (id 0) (at -7.62 16.002 0)
@@ -2906,7 +2912,7 @@
       (reference "SW44") (unit 1) (value "SW_,") (footprint "Switch_Keyboard_Hotswap_Kailh:SW_Hotswap_Kailh_MX_1.00u")
     )
     (path "/93eb0ca5-32f0-4914-ab02-ab34a84786ac/a32f2533-40ef-41b2-84eb-34fda6dad253"
-      (reference "SW45") (unit 1) (value "SW_r_ctrl") (footprint "Switch_Keyboard_Hotswap_Kailh:SW_Hotswap_Kailh_MX_1.00u")
+      (reference "SW45") (unit 1) (value "SW_fn1") (footprint "Switch_Keyboard_Hotswap_Kailh:SW_Hotswap_Kailh_MX_1.00u")
     )
     (path "/93eb0ca5-32f0-4914-ab02-ab34a84786ac/08072c06-3ca4-4152-917a-c4b4aad9a172"
       (reference "SW46") (unit 1) (value "SW_9") (footprint "Switch_Keyboard_Hotswap_Kailh:SW_Hotswap_Kailh_MX_1.00u")
@@ -2921,7 +2927,7 @@
       (reference "SW49") (unit 1) (value "SW_.") (footprint "Switch_Keyboard_Hotswap_Kailh:SW_Hotswap_Kailh_MX_1.00u")
     )
     (path "/93eb0ca5-32f0-4914-ab02-ab34a84786ac/76372b8e-8496-4c93-868a-5cd38f8ac61d"
-      (reference "SW50") (unit 1) (value "SW_fn1") (footprint "Switch_Keyboard_Hotswap_Kailh:SW_Hotswap_Kailh_MX_1.00u")
+      (reference "SW50") (unit 1) (value "SW_fn2") (footprint "Switch_Keyboard_Hotswap_Kailh:SW_Hotswap_Kailh_MX_1.00u")
     )
     (path "/93eb0ca5-32f0-4914-ab02-ab34a84786ac/bee60033-38f1-4cde-8722-374ed59cb68a"
       (reference "SW51") (unit 1) (value "SW_0") (footprint "Switch_Keyboard_Hotswap_Kailh:SW_Hotswap_Kailh_MX_1.00u")

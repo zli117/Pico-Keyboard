@@ -4,6 +4,11 @@
 
   (paper "A4")
 
+  (title_block
+    (title "Switch Matrix")
+    (comment 1 "CC BY-SA 2.0")
+  )
+
   (lib_symbols
     (symbol "Device:D" (pin_numbers hide) (pin_names (offset 1.016) hide) (in_bom yes) (on_board yes)
       (property "Reference" "D" (id 0) (at 0 2.54 0)
@@ -2048,7 +2053,7 @@
     (in_bom yes) (on_board yes) (fields_autoplaced)
     (uuid 76372b8e-8496-4c93-868a-5cd38f8ac61d)
     (property "Reference" "SW50" (id 0) (at 196.85 127 0))
-    (property "Value" "SW_fn1" (id 1) (at 196.85 129.54 0))
+    (property "Value" "SW_fn2" (id 1) (at 196.85 129.54 0))
     (property "Footprint" "Switch_Keyboard_Hotswap_Kailh:SW_Hotswap_Kailh_MX_1.00u" (id 2) (at 196.85 133.35 0)
       (effects (font (size 1.27 1.27)) hide)
     )
@@ -2417,7 +2422,7 @@
     (in_bom yes) (on_board yes) (fields_autoplaced)
     (uuid a32f2533-40ef-41b2-84eb-34fda6dad253)
     (property "Reference" "SW45" (id 0) (at 181.61 127 0))
-    (property "Value" "SW_r_ctrl" (id 1) (at 181.61 129.54 0))
+    (property "Value" "SW_fn1" (id 1) (at 181.61 129.54 0))
     (property "Footprint" "Switch_Keyboard_Hotswap_Kailh:SW_Hotswap_Kailh_MX_1.00u" (id 2) (at 181.61 133.35 0)
       (effects (font (size 1.27 1.27)) hide)
     )
