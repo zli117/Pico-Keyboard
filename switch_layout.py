@@ -58,12 +58,29 @@ for row in layout:
 
 # Place the diodes
 
+def flip_text(footprint):
+    footprint.Reference().Flip(footprint.Reference().GetPosition(), True)
+    drawings = footprint.GraphicalItems()
+    for drawing in drawings:
+        if isinstance(drawing, pcbnew.FP_TEXT):
+            drawing.Flip(drawing.GetPosition(), True)
+        else:
+            layer_name = drawing.GetLayerName()
+            if layer_name[0] == 'F':
+                new_layer_name = 'B' + layer_name[1:]
+            elif layer_name[0] == 'B':
+                new_layer_name = 'F' + layer_name[1:]
+            else:
+                assert False, layer_name
+            drawing.SetLayer(pcb.GetLayerID(new_layer_name))
+
 for key, (x, y) in name_to_xy.items():
     ref_name = name_to_footprint[key].Reference().GetShownText()
     ref_number = int(ref_name[2:]) + 1
     diode_ref = 'D%d' % (ref_number)
     diode = pcb.FindFootprintByReference(diode_ref)
     diode.SetLayer(pcb.GetLayerID('B.Cu'))
+    flip_text(diode)
     assert diode, (diode_ref, key)
     diode.SetPosition(pcbnew.wxPointMM(x + KEY_MM / 2, y - 5))
     diode.Rotate(pcbnew.wxPointMM(x + KEY_MM / 2, y - 5), -900)
