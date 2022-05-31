@@ -6,8 +6,9 @@
 
   (title_block
     (title "Pico Prototype Keyboard 65%")
-    (comment 1 "Ver 0.1")
-    (comment 2 "CC BY-SA 2.0")
+    (comment 1 "Ver 0.2")
+    (comment 2 "CC BY-SA 4.0")
+    (comment 3 "https://github.com/zli117/Pico-Keyboard-V1")
   )
 
   (lib_symbols
