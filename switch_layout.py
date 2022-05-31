@@ -1,15 +1,16 @@
 import pcbnew
+import os
 
 KEY_MM = 19.05
 
 layout = [
-    ['SW_esc'],
+    #['SW_esc', 'SW_del', 'SW_ins'],
     ['SW_`', 'SW_1', 'SW_2', 'SW_3', 'SW_4', 'SW_5', 'SW_6', 'SW_7', 'SW_8', 'SW_9', 'SW_0', 'SW_-', 'SW_+', 'SW_back'],
-    ['SW_tab', 'SW_q', 'SW_w', 'SW_e', 'SW_r', 'SW_t', 'SW_y', 'SW_u', 'SW_i', 'SW_o', 'SW_p', 'SW_[', 'SW_]', 'SW_\\'],
-    ['SW_caps', 'SW_a', 'SW_s', 'SW_d', 'SW_f', 'SW_g', 'SW_h', 'SW_j', 'SW_k', 'SW_l', 'SW_;', 'SW_\'', 'SW_enter'],
-    ['SW_shift', 'SW_z', 'SW_x', 'SW_c', 'SW_v', 'SW_b', 'SW_n', 'SW_m', 'SW_,', 'SW_.', 'SW_/', 'SW_r_shift', 'SW_up'],
-    ['SW_ctrl', 'SW_super', 'SW_alt', 'SW_space', 'SW_r_ctrl', 'SW_fn1', 'SW_left', 'SW_down', 'SW_right'],
-    ['SW_m_left', 'SW_m_middle', 'SW_m_right'],
+    ['SW_tab', 'SW_q', 'SW_w', 'SW_e', 'SW_r', 'SW_t', 'SW_y', 'SW_u', 'SW_i', 'SW_o', 'SW_p', 'SW_[', 'SW_]', 'SW_\\', 'SW_esc'],
+    ['SW_caps', 'SW_a', 'SW_s', 'SW_d', 'SW_f', 'SW_g', 'SW_h', 'SW_j', 'SW_k', 'SW_l', 'SW_;', 'SW_\'', 'SW_enter', 'SW_del'],
+    ['SW_shift', 'SW_z', 'SW_x', 'SW_c', 'SW_v', 'SW_b', 'SW_n', 'SW_m', 'SW_,', 'SW_.', 'SW_/', 'SW_r_shift', 'SW_ins'],
+    ['SW_ctrl', 'SW_super', 'SW_alt', 'SW_space', 'SW_fn1', 'SW_fn2', 'SW_left', 'SW_down', 'SW_up', 'SW_right'],
+    ['SW_m_left', 'SW_m_right'],
 ]
 
 layout_flatten = sum(layout, [])
@@ -23,12 +24,22 @@ special_sizes = {
     'SW_caps': 1.75,
     'SW_enter': 2.25,
     'SW_shift': 2.25,
-    'SW_r_shift': 1.75,
+    'SW_r_shift': 2.75,
     'SW_ctrl': 1.25,
     'SW_super': 1.25,
     'SW_alt': 1.25,
     'SW_space': 6.25,
 }
+
+stablizers = {
+    'SW_back': 'Stabilizer_Cherry_MX_2.00u',
+    'SW_enter': 'Stabilizer_Cherry_MX_2.00u',
+    'SW_shift': 'Stabilizer_Cherry_MX_2.00u',
+    'SW_r_shift': 'Stabilizer_Cherry_MX_2.00u',
+    'SW_space': 'Stabilizer_Cherry_MX_6.25u',
+}
+
+STABLIZER_LIB_PATH = 'footprints/com_github_perigoso_keyswitch-kicad-library/Mounting_Keyboard_Stabilizer.pretty'
 
 pcb = pcbnew.GetBoard()
 
@@ -54,7 +65,29 @@ for row in layout:
         f.Rotate(pcbnew.wxPointMM(x, y), 1800)
         name_to_xy[key] = (x, y)
         previous_width = width
+        if key in stablizers:
+            stab_name = stablizers[key]
+            stab_f = pcbnew.FootprintLoad(os.path.join(os.getenv('KICAD6_3RD_PARTY'), STABLIZER_LIB_PATH),
+                                          stab_name)
+            pcb.Add(stab_f)
+            stab_f.SetPosition(pcbnew.wxPointMM(x, y))
+            stab_f.Rotate(pcbnew.wxPointMM(x, y), 1800)
     y += KEY_MM
+
+rotary_encoder = pcb.FindFootprintByReference('SW1')
+x = name_to_xy['SW_esc'][0] - 7.48
+y = name_to_xy['SW_back'][1] - 2.48
+#rotary_encoder.Rotate(rotary_encoder.GetPosition(), 1800)
+rotary_encoder.SetPosition(pcbnew.wxPointMM(x, y))
+
+joy_stick = pcb.FindFootprintByReference('U1')
+x, y = name_to_xy['SW_space']
+y += 26
+joy_stick.SetPosition(pcbnew.wxPointMM(x, y))
+name_to_footprint['SW_m_left'].SetPosition(pcbnew.wxPointMM(x - 25, y))
+name_to_xy['SW_m_left'] = (x - 25, y)
+name_to_footprint['SW_m_right'].SetPosition(pcbnew.wxPointMM(x + 25, y))
+name_to_xy['SW_m_right'] = (x + 25, y)
 
 # Place the diodes
 
@@ -85,11 +118,12 @@ for key, (x, y) in name_to_xy.items():
     diode.SetPosition(pcbnew.wxPointMM(x + KEY_MM / 2, y - 5))
     diode.Rotate(pcbnew.wxPointMM(x + KEY_MM / 2, y - 5), -900)
 
-rotary_encoder = pcb.FindFootprintByReference('SW1')
-joy_stick = pcb.FindFootprintByReference('U1')
+# Place Pico
 
-up_x = name_to_xy['SW_up'][0]
-esc_y = name_to_xy['SW_esc'][1]
-rotary_encoder.SetPosition(pcbnew.wxPointMM(up_x - 7.48, esc_y - 2.48))
+pico = pcb.FindFootprintByReference('U2')
+pico.Flip(pico.GetPosition(), True)
+pico.Rotate(pico.GetPosition(), 900)
+y = name_to_xy['SW_space'][1] + 14 + KEY_MM / 2
+pico.SetPosition(pcbnew.wxPointMM(26, y))
 
 pcbnew.Refresh()

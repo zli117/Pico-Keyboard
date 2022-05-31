@@ -1556,10 +1556,10 @@
       (effects (font (size 1.27 1.27)) (justify right) hide)
     )
   )
-  (global_label "C7" (shape input) (at 60.198 131.572 180) (fields_autoplaced)
+  (global_label "C4" (shape input) (at 60.198 131.572 180) (fields_autoplaced)
     (effects (font (size 1.27 1.27)) (justify right))
     (uuid 83295534-7e39-4262-8dde-924aaf19777d)
-    (property "Intersheet References" "${INTERSHEET_REFS}" (id 0) (at 55.3054 131.6514 0)
+    (property "Intersheet References" "${INTERSHEET_REFS}" (id 0) (at 55.3054 131.4926 0)
       (effects (font (size 1.27 1.27)) (justify right) hide)
     )
   )
@@ -1668,7 +1668,7 @@
       (effects (font (size 1.27 1.27)) (justify right) hide)
     )
   )
-  (global_label "R3" (shape input) (at 161.798 125.222 0) (fields_autoplaced)
+  (global_label "R2" (shape input) (at 161.798 125.222 0) (fields_autoplaced)
     (effects (font (size 1.27 1.27)) (justify left))
     (uuid aed1b3fc-8219-4abc-bb96-1c4a7564f371)
     (property "Intersheet References" "${INTERSHEET_REFS}" (id 0) (at 166.6906 125.1426 0)
@@ -2329,7 +2329,7 @@
     (property "Value" "Conn_01x04_12864" (id 1) (at 99.06 68.0719 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
-    (property "Footprint" "Connector_PinHeader_2.54mm:PinHeader_1x04_P2.54mm_Vertical" (id 2) (at 98.298 65.532 0)
+    (property "Footprint" "JMD0.96C:JMD0.96C" (id 2) (at 98.298 65.532 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Datasheet" "~" (id 3) (at 98.298 65.532 0)
@@ -2626,7 +2626,7 @@
     (path "/93eb0ca5-32f0-4914-ab02-ab34a84786ac/62ff4a3a-30fd-4360-bf3e-536212daf81f"
       (reference "D26") (unit 1) (value "D") (footprint "Diode_THT:D_DO-35_SOD27_P7.62mm_Horizontal")
     )
-    (path "/93eb0ca5-32f0-4914-ab02-ab34a84786ac/4d34bcb6-b3ef-4da4-b4bc-aef80fde0b36"
+    (path "/93eb0ca5-32f0-4914-ab02-ab34a84786ac/8cfd8198-2da1-49b2-988a-fc47b5f825b6"
       (reference "D27") (unit 1) (value "D") (footprint "Diode_THT:D_DO-35_SOD27_P7.62mm_Horizontal")
     )
     (path "/93eb0ca5-32f0-4914-ab02-ab34a84786ac/83882547-5bae-48f7-a221-15af636215e1"
@@ -2713,6 +2713,9 @@
     (path "/93eb0ca5-32f0-4914-ab02-ab34a84786ac/db5ca558-fc4c-48a7-81ac-fc133ef4dac9"
       (reference "D55") (unit 1) (value "D") (footprint "Diode_THT:D_DO-35_SOD27_P7.62mm_Horizontal")
     )
+    (path "/93eb0ca5-32f0-4914-ab02-ab34a84786ac/1da39a32-ecec-495c-8a0e-34e03c6c6dd0"
+      (reference "D56") (unit 1) (value "D") (footprint "Diode_THT:D_DO-35_SOD27_P7.62mm_Horizontal")
+    )
     (path "/93eb0ca5-32f0-4914-ab02-ab34a84786ac/c6443d90-7cb2-47bd-865f-13cdaa7bc2c9"
       (reference "D57") (unit 1) (value "D") (footprint "Diode_THT:D_DO-35_SOD27_P7.62mm_Horizontal")
     )
@@ -2756,7 +2759,7 @@
       (reference "D70") (unit 1) (value "D") (footprint "Diode_THT:D_DO-35_SOD27_P7.62mm_Horizontal")
     )
     (path "/b89f738e-8c3e-40c9-b2a7-408e8e95e3d1"
-      (reference "J1") (unit 1) (value "Conn_01x04_12864") (footprint "Connector_PinHeader_2.54mm:PinHeader_1x04_P2.54mm_Vertical")
+      (reference "J1") (unit 1) (value "Conn_01x04_12864") (footprint "JMD0.96C:JMD0.96C")
     )
     (path "/d3f790aa-d4b9-4890-be7f-b9e9dd8e4a6f"
       (reference "J2") (unit 1) (value "Conn_01x03_Female") (footprint "Connector_PinHeader_2.54mm:PinHeader_1x03_P2.54mm_Vertical")
@@ -2854,8 +2857,8 @@
     (path "/93eb0ca5-32f0-4914-ab02-ab34a84786ac/77f3c7c6-8ed1-436a-a83c-d234885d2692"
       (reference "SW25") (unit 1) (value "SW_v") (footprint "Switch_Keyboard_Hotswap_Kailh:SW_Hotswap_Kailh_MX_1.00u")
     )
-    (path "/93eb0ca5-32f0-4914-ab02-ab34a84786ac/7cbf64ab-c826-4e5f-89d7-11e568e4acba"
-      (reference "SW26") (unit 1) (value "SW_m_middle") (footprint "Switch_Keyboard_Hotswap_Kailh:SW_Hotswap_Kailh_MX_1.00u")
+    (path "/93eb0ca5-32f0-4914-ab02-ab34a84786ac/6e8d254a-29e2-433c-a4bb-10fc10c90f8e"
+      (reference "SW26") (unit 1) (value "SW_del") (footprint "Switch_Keyboard_Hotswap_Kailh:SW_Hotswap_Kailh_MX_1.00u")
     )
     (path "/93eb0ca5-32f0-4914-ab02-ab34a84786ac/fd0a5dea-43bd-4651-ba08-f6dc4e249477"
       (reference "SW27") (unit 1) (value "SW_5") (footprint "Switch_Keyboard_Hotswap_Kailh:SW_Hotswap_Kailh_MX_1.00u")
@@ -2941,6 +2944,9 @@
     (path "/93eb0ca5-32f0-4914-ab02-ab34a84786ac/a9ec2b88-7d2b-43aa-b95d-dad5030b25ab"
       (reference "SW54") (unit 1) (value "SW_/") (footprint "Switch_Keyboard_Hotswap_Kailh:SW_Hotswap_Kailh_MX_1.00u")
     )
+    (path "/93eb0ca5-32f0-4914-ab02-ab34a84786ac/da0db71c-6006-420e-88af-bf2fc4cfebeb"
+      (reference "SW55") (unit 1) (value "SW_ins") (footprint "Switch_Keyboard_Hotswap_Kailh:SW_Hotswap_Kailh_MX_1.00u")
+    )
     (path "/93eb0ca5-32f0-4914-ab02-ab34a84786ac/e2fbfb68-2502-4201-8729-9318b4333f5b"
       (reference "SW56") (unit 1) (value "SW_-") (footprint "Switch_Keyboard_Hotswap_Kailh:SW_Hotswap_Kailh_MX_1.00u")
     )
@@ -2951,7 +2957,7 @@
       (reference "SW58") (unit 1) (value "SW_'") (footprint "Switch_Keyboard_Hotswap_Kailh:SW_Hotswap_Kailh_MX_1.00u")
     )
     (path "/93eb0ca5-32f0-4914-ab02-ab34a84786ac/3ca8c7fb-316f-4a94-8fcd-84cc752976fa"
-      (reference "SW59") (unit 1) (value "SW_r_shift") (footprint "Switch_Keyboard_Hotswap_Kailh:SW_Hotswap_Kailh_MX_1.75u")
+      (reference "SW59") (unit 1) (value "SW_r_shift") (footprint "Switch_Keyboard_Hotswap_Kailh:SW_Hotswap_Kailh_MX_2.75u")
     )
     (path "/93eb0ca5-32f0-4914-ab02-ab34a84786ac/3e9fcf34-2e40-4689-b87c-54511fefb24c"
       (reference "SW60") (unit 1) (value "SW_left") (footprint "Switch_Keyboard_Hotswap_Kailh:SW_Hotswap_Kailh_MX_1.00u")
@@ -2966,10 +2972,10 @@
       (reference "SW63") (unit 1) (value "SW_enter") (footprint "Switch_Keyboard_Hotswap_Kailh:SW_Hotswap_Kailh_MX_2.25u")
     )
     (path "/93eb0ca5-32f0-4914-ab02-ab34a84786ac/95e3c50e-5774-4901-900f-beeed1180985"
-      (reference "SW64") (unit 1) (value "SW_up") (footprint "Switch_Keyboard_Hotswap_Kailh:SW_Hotswap_Kailh_MX_1.00u")
+      (reference "SW64") (unit 1) (value "SW_down") (footprint "Switch_Keyboard_Hotswap_Kailh:SW_Hotswap_Kailh_MX_1.00u")
     )
     (path "/93eb0ca5-32f0-4914-ab02-ab34a84786ac/10889ba4-4543-4360-91d6-dc7d95e4e950"
-      (reference "SW65") (unit 1) (value "SW_down") (footprint "Switch_Keyboard_Hotswap_Kailh:SW_Hotswap_Kailh_MX_1.00u")
+      (reference "SW65") (unit 1) (value "SW_up") (footprint "Switch_Keyboard_Hotswap_Kailh:SW_Hotswap_Kailh_MX_1.00u")
     )
     (path "/93eb0ca5-32f0-4914-ab02-ab34a84786ac/ec14170b-5cf5-4988-b627-513b3c0ee59d"
       (reference "SW66") (unit 1) (value "SW_back") (footprint "Switch_Keyboard_Hotswap_Kailh:SW_Hotswap_Kailh_MX_2.00u")
