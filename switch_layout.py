@@ -4,11 +4,10 @@ import os
 KEY_MM = 19.05
 
 layout = [
-    #['SW_esc', 'SW_del', 'SW_ins'],
-    ['SW_`', 'SW_1', 'SW_2', 'SW_3', 'SW_4', 'SW_5', 'SW_6', 'SW_7', 'SW_8', 'SW_9', 'SW_0', 'SW_-', 'SW_+', 'SW_back'],
-    ['SW_tab', 'SW_q', 'SW_w', 'SW_e', 'SW_r', 'SW_t', 'SW_y', 'SW_u', 'SW_i', 'SW_o', 'SW_p', 'SW_[', 'SW_]', 'SW_\\', 'SW_esc'],
-    ['SW_caps', 'SW_a', 'SW_s', 'SW_d', 'SW_f', 'SW_g', 'SW_h', 'SW_j', 'SW_k', 'SW_l', 'SW_;', 'SW_\'', 'SW_enter', 'SW_del'],
-    ['SW_shift', 'SW_z', 'SW_x', 'SW_c', 'SW_v', 'SW_b', 'SW_n', 'SW_m', 'SW_,', 'SW_.', 'SW_/', 'SW_r_shift', 'SW_ins'],
+    ['RotaryEncoder_Switch', 'SW_`', 'SW_1', 'SW_2', 'SW_3', 'SW_4', 'SW_5', 'SW_6', 'SW_7', 'SW_8', 'SW_9', 'SW_0', 'SW_-', 'SW_+', 'SW_back'],
+    ['SW_esc', 'SW_tab', 'SW_q', 'SW_w', 'SW_e', 'SW_r', 'SW_t', 'SW_y', 'SW_u', 'SW_i', 'SW_o', 'SW_p', 'SW_[', 'SW_]', 'SW_\\'],
+    ['SW_del', 'SW_caps', 'SW_a', 'SW_s', 'SW_d', 'SW_f', 'SW_g', 'SW_h', 'SW_j', 'SW_k', 'SW_l', 'SW_;', 'SW_\'', 'SW_enter'],
+    ['SW_ins', 'SW_shift', 'SW_z', 'SW_x', 'SW_c', 'SW_v', 'SW_b', 'SW_n', 'SW_m', 'SW_,', 'SW_.', 'SW_/', 'SW_r_shift'],
     ['SW_ctrl', 'SW_super', 'SW_alt', 'SW_space', 'SW_fn1', 'SW_fn2', 'SW_left', 'SW_down', 'SW_up', 'SW_right'],
     ['SW_m_left', 'SW_m_right'],
 ]
@@ -71,13 +70,13 @@ for row in layout:
                                           stab_name)
             pcb.Add(stab_f)
             stab_f.SetPosition(pcbnew.wxPointMM(x, y))
-            stab_f.Rotate(pcbnew.wxPointMM(x, y), 1800)
+            #stab_f.Rotate(pcbnew.wxPointMM(x, y), 1800)
     y += KEY_MM
 
 rotary_encoder = pcb.FindFootprintByReference('SW1')
 x = name_to_xy['SW_esc'][0] - 7.48
 y = name_to_xy['SW_back'][1] - 2.48
-#rotary_encoder.Rotate(rotary_encoder.GetPosition(), 1800)
+rotary_encoder.Rotate(rotary_encoder.GetPosition(), 1800)
 rotary_encoder.SetPosition(pcbnew.wxPointMM(x, y))
 
 joy_stick = pcb.FindFootprintByReference('U1')
