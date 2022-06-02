@@ -8,7 +8,7 @@
     (title "Pico Prototype Keyboard 65%")
     (comment 1 "Ver 0.3")
     (comment 2 "CC BY-SA 4.0")
-    (comment 3 "https://github.com/zli117/Pico-Keyboard-V1")
+    (comment 3 "https://github.com/zli117/Pico-Keyboard")
   )
 
   (lib_symbols
