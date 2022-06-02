@@ -1,0 +1,4 @@
+(sym_lib_table
+  (lib (name "COM-09032")(type "Legacy")(uri "${KIPRJMOD}/Library/COM-09032/COM-09032.lib")(options "")(descr ""))
+  (lib (name "MCU_RaspberryPi_and_Boards")(type "KiCad")(uri "${KIPRJMOD}/Library/Pico/MCU_RaspberryPi_and_Boards.kicad_sym")(options "")(descr ""))
+)

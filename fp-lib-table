@@ -1,3 +1,6 @@
 (fp_lib_table
-  (lib (name "JMD0.96C")(type "KiCad")(uri "C:/Users/user0/Documents/Keyboard/Library/JMD0.96C.pretty")(options "")(descr ""))
+  (lib (name "MCU_RaspberryPi_and_Boards")(type "KiCad")(uri "${KIPRJMOD}/Library/Pico/MCU_RaspberryPi_and_Boards.pretty")(options "")(descr ""))
+  (lib (name "JMD0.96C")(type "KiCad")(uri "${KIPRJMOD}/Library/JMD0.96C.pretty")(options "")(descr ""))
+  (lib (name "RotaryEncoder")(type "KiCad")(uri "${KIPRJMOD}/Library/RotaryEncoder")(options "")(descr ""))
+  (lib (name "COM-09032")(type "KiCad")(uri "${KIPRJMOD}/Library/COM-09032")(options "")(descr ""))
 )

@@ -1,0 +1,34 @@
+EESchema-LIBRARY Version 2.3
+#encoding utf-8
+#(c) SnapEDA 2016 (snapeda.com)
+#This work is licensed under a Creative Commons Attribution-ShareAlike 4.0 International License (CC BY-SA) with Design Exception 1.0
+#
+# COM-09032
+#
+DEF COM-09032 U 0 40 Y Y 1 L N
+F0 "U" -300 630 50 H V L BNN
+F1 "COM-09032" -300 -800 50 H V L BNN
+F2 "XDCR_COM-09032" 0 0 50 H I L BNN
+F3 "" 0 0 50 H I L BNN
+F4 "N/A" 0 0 50 H I L BNN "PARTREV"
+F5 "SparkFun Electronics" 0 0 50 H I L BNN "MANUFACTURER"
+F6 "Manufacturer Recommendations" 0 0 50 H I L BNN "STANDARD"
+F7 "30.1mm" 0 0 50 H I L BNN "MAXIMUM_PACKAGE_HEIGHT"
+DRAW
+S -300 -700 300 600 0 0 10 f
+X V V2 -500 500 200 R 40 40 0 0 P 
+X SEL+ B1A -500 -300 200 R 40 40 0 0 P 
+X H+ H1 -500 0 200 R 40 40 0 0 P 
+X H H2 -500 100 200 R 40 40 0 0 P 
+X H- H3 -500 -100 200 R 40 40 0 0 P 
+X V+ V1 -500 400 200 R 40 40 0 0 P 
+X V- V3 -500 300 200 R 40 40 0 0 P 
+X SEL- B2A -500 -400 200 R 40 40 0 0 P 
+X SHIELD S1 -500 -600 200 R 40 40 0 0 P 
+X SHIELD S2 -500 -600 200 R 40 40 0 0 P 
+X SHIELD S3 -500 -600 200 R 40 40 0 0 P 
+X SHIELD S4 -500 -600 200 R 40 40 0 0 P 
+ENDDRAW
+ENDDEF
+#
+# End Library
