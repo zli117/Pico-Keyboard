@@ -1,7 +1,13 @@
 import pcbnew
 import os
 
+X_OFFSET = 50
+Y_OFFSET = 80
 KEY_MM = 19.05
+LEFT_PAD = 8.5
+RIGHT_PAD = 8.5
+BOTTOM_PAD = 34
+CORNER_RADIUS = 5
 
 layout = [
     ['RotaryEncoder_Switch', 'SW_`', 'SW_1', 'SW_2', 'SW_3', 'SW_4', 'SW_5', 'SW_6', 'SW_7', 'SW_8', 'SW_9', 'SW_0', 'SW_-', 'SW_+', 'SW_back'],
@@ -48,35 +54,36 @@ for f in pcb.Footprints():
     if show_text in switch_names:
         name_to_footprint[show_text] = f
 
-y = KEY_MM / 2 + 300
+y = KEY_MM / 2 + Y_OFFSET
 name_to_xy = dict()
 
 # Place the switches
 
 for row in layout:
-    x = 0
+    x = LEFT_PAD + X_OFFSET
     previous_width = 0
     for key in row:
         f = name_to_footprint[key]
         width = special_sizes.get(key, 1.0) * KEY_MM
         x += (previous_width + width) / 2
         f.SetPosition(pcbnew.wxPointMM(x, y))
-        f.Rotate(pcbnew.wxPointMM(x, y), 1800)
+        #f.Rotate(pcbnew.wxPointMM(x, y), 1800)
         name_to_xy[key] = (x, y)
         previous_width = width
         if key in stablizers:
             stab_name = stablizers[key]
             stab_f = pcbnew.FootprintLoad(os.path.join(os.getenv('KICAD6_3RD_PARTY'), STABLIZER_LIB_PATH),
                                           stab_name)
-            pcb.Add(stab_f)
             stab_f.SetPosition(pcbnew.wxPointMM(x, y))
+            stab_f.Reference().SetVisible(False)
+            pcb.Add(stab_f)
             #stab_f.Rotate(pcbnew.wxPointMM(x, y), 1800)
     y += KEY_MM
 
 rotary_encoder = pcb.FindFootprintByReference('SW1')
 x = name_to_xy['SW_esc'][0] - 7.48
 y = name_to_xy['SW_back'][1] - 2.48
-rotary_encoder.Rotate(rotary_encoder.GetPosition(), 1800)
+#rotary_encoder.Rotate(rotary_encoder.GetPosition(), 1800)
 rotary_encoder.SetPosition(pcbnew.wxPointMM(x, y))
 
 joy_stick = pcb.FindFootprintByReference('U1')
@@ -114,8 +121,9 @@ for key, (x, y) in name_to_xy.items():
     diode.SetLayer(pcb.GetLayerID('B.Cu'))
     flip_text(diode)
     assert diode, (diode_ref, key)
-    diode.SetPosition(pcbnew.wxPointMM(x + KEY_MM / 2, y - 5))
-    diode.Rotate(pcbnew.wxPointMM(x + KEY_MM / 2, y - 5), -900)
+    diode_position = (x - KEY_MM / 2, y + 5.08)
+    diode.SetPosition(pcbnew.wxPointMM(*diode_position))
+    diode.Rotate(pcbnew.wxPointMM(*diode_position), 900)
 
 # Place Pico
 
@@ -123,6 +131,92 @@ pico = pcb.FindFootprintByReference('U2')
 pico.Flip(pico.GetPosition(), True)
 pico.Rotate(pico.GetPosition(), 900)
 y = name_to_xy['SW_space'][1] + 14 + KEY_MM / 2
-pico.SetPosition(pcbnew.wxPointMM(26, y))
+pico.SetPosition(pcbnew.wxPointMM(X_OFFSET + 26, y))  # Length of pico is 52
+
+# Place the screen
+
+x, y = joy_stick.GetPosition()
+x = pcbnew.ToMM(x)
+y = pcbnew.ToMM(y)
+screen = pcb.FindFootprintByReference('J1')
+screen.SetPosition(pcbnew.wxPointMM(x - 60, y))
+
+# Add edge cut border lines
+
+switch_width = name_to_xy['SW_right'][0] + KEY_MM / 2
+switch_bottom = name_to_xy['SW_space'][1] + KEY_MM / 2
+
+left = pcbnew.PCB_SHAPE()
+left.SetStart(pcbnew.wxPointMM(X_OFFSET, Y_OFFSET + CORNER_RADIUS))
+left.SetEnd(pcbnew.wxPointMM(X_OFFSET, switch_bottom + BOTTOM_PAD - CORNER_RADIUS))
+left.SetLayer(pcb.GetLayerID('Edge.Cuts'))
+pcb.Drawings().append(left)
+
+right = pcbnew.PCB_SHAPE()
+right.SetStart(pcbnew.wxPointMM(switch_width + RIGHT_PAD, Y_OFFSET + CORNER_RADIUS))
+right.SetEnd(pcbnew.wxPointMM(switch_width + RIGHT_PAD, switch_bottom + BOTTOM_PAD - CORNER_RADIUS))
+right.SetLayer(pcb.GetLayerID('Edge.Cuts'))
+pcb.Drawings().append(right)
+
+top = pcbnew.PCB_SHAPE()
+top.SetStart(pcbnew.wxPointMM(X_OFFSET + CORNER_RADIUS, Y_OFFSET))
+top.SetEnd(pcbnew.wxPointMM(switch_width + RIGHT_PAD - CORNER_RADIUS, Y_OFFSET))
+top.SetLayer(pcb.GetLayerID('Edge.Cuts'))
+pcb.Drawings().append(top)
+
+bottom = pcbnew.PCB_SHAPE()
+bottom.SetStart(pcbnew.wxPointMM(X_OFFSET + CORNER_RADIUS, switch_bottom + BOTTOM_PAD))
+bottom.SetEnd(pcbnew.wxPointMM(switch_width + RIGHT_PAD - CORNER_RADIUS, switch_bottom + BOTTOM_PAD))
+bottom.SetLayer(pcb.GetLayerID('Edge.Cuts'))
+pcb.Drawings().append(bottom)
+
+# Add corner arcs
+
+top_left = pcbnew.PCB_SHAPE()
+top_left.SetShape(pcbnew.SHAPE_T_ARC)
+top_left.SetStart(pcbnew.wxPointMM(X_OFFSET, Y_OFFSET + CORNER_RADIUS))
+top_left.SetCenter(pcbnew.wxPointMM(X_OFFSET + CORNER_RADIUS, Y_OFFSET + CORNER_RADIUS))
+top_left.SetArcAngleAndEnd(900)
+top_left.SetLayer(pcb.GetLayerID('Edge.Cuts'))
+pcb.Drawings().append(top_left)
+
+top_right = pcbnew.PCB_SHAPE()
+top_right.SetShape(pcbnew.SHAPE_T_ARC)
+top_right.SetStart(pcbnew.wxPointMM(switch_width + RIGHT_PAD - CORNER_RADIUS, Y_OFFSET))
+top_right.SetCenter(pcbnew.wxPointMM(switch_width + RIGHT_PAD - CORNER_RADIUS, Y_OFFSET + CORNER_RADIUS))
+top_right.SetArcAngleAndEnd(900)
+top_right.SetLayer(pcb.GetLayerID('Edge.Cuts'))
+pcb.Drawings().append(top_right)
+
+bottom_right = pcbnew.PCB_SHAPE()
+bottom_right.SetShape(pcbnew.SHAPE_T_ARC)
+bottom_right.SetStart(pcbnew.wxPointMM(switch_width + RIGHT_PAD, switch_bottom + BOTTOM_PAD - CORNER_RADIUS))
+bottom_right.SetCenter(pcbnew.wxPointMM(switch_width + RIGHT_PAD - CORNER_RADIUS, switch_bottom + BOTTOM_PAD - CORNER_RADIUS))
+bottom_right.SetArcAngleAndEnd(900)
+bottom_right.SetLayer(pcb.GetLayerID('Edge.Cuts'))
+pcb.Drawings().append(bottom_right)
+
+bottom_left = pcbnew.PCB_SHAPE()
+bottom_left.SetShape(pcbnew.SHAPE_T_ARC)
+bottom_left.SetStart(pcbnew.wxPointMM(X_OFFSET + CORNER_RADIUS, switch_bottom + BOTTOM_PAD))
+bottom_left.SetCenter(pcbnew.wxPointMM(X_OFFSET + CORNER_RADIUS, switch_bottom + BOTTOM_PAD - CORNER_RADIUS))
+bottom_left.SetArcAngleAndEnd(900)
+bottom_left.SetLayer(pcb.GetLayerID('Edge.Cuts'))
+pcb.Drawings().append(bottom_left)
+
+# Add mounting holes
+
+MOUNTING_HOLE_PATH = os.path.join(os.getenv('KICAD6_FOOTPRINT_DIR'), 'MountingHole.pretty')
+
+centers = [(X_OFFSET + CORNER_RADIUS, Y_OFFSET + CORNER_RADIUS),
+           (switch_width + RIGHT_PAD - CORNER_RADIUS, Y_OFFSET + CORNER_RADIUS),
+           (switch_width + RIGHT_PAD - CORNER_RADIUS, switch_bottom + BOTTOM_PAD - CORNER_RADIUS),
+           (X_OFFSET + CORNER_RADIUS, switch_bottom + BOTTOM_PAD - CORNER_RADIUS)]
+
+for center in centers:
+    hole = pcbnew.FootprintLoad(MOUNTING_HOLE_PATH, 'MountingHole_3.2mm_M3_ISO7380_Pad')
+    hole.SetPosition(pcbnew.wxPointMM(*center))
+    hole.Reference().SetVisible(False)
+    pcb.Add(hole)
 
 pcbnew.Refresh()
