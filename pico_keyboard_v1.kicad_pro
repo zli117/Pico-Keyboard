@@ -367,8 +367,8 @@
       "idf": "",
       "netlist": "",
       "specctra_dsn": "",
-      "step": "pico_keyboard_v1.step",
-      "vrml": ""
+      "step": "../../../Downloads/pico_keyboard_v1.step",
+      "vrml": "../../../Downloads/pico_keyboard_v1.wrl"
     },
     "page_layout_descr_file": ""
   },
