@@ -23,7 +23,7 @@ A hot-swappable mechanical keyboard built from scratch with Pi Pico board, with 
 
 # Overall Cost Breakdown
 
-In total per keyboard build cost is roughly 
+In total per keyboard material cost is roughly $129.57
 
  * 5 PCB from JLCPCB with shipping: $39.52. Roughly $7.9 per board.
  * 100 hot-swappable PCB socket: $14.50. Used 68, so total $9.86.
