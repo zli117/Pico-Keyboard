@@ -32,7 +32,7 @@ In total per keyboard material cost is roughly $129.57
  * COM-09032 Joystick: $4.50 each.
  * 100 1N4148 diodes: $4.99. Used 70 so $3.50.
  * 150 WS2812B: $14.49. Used 17, so total $1.64.
- * 3D printed cases. Each part weight about 50g and there are 5 (2 for plate, and 3 for bottom). Total weight 250g roughly $6.
+ * 3D printed case. Each part weight about 50g and there are 5 (2 for plate, and 3 for bottom). Total weight 250g roughly $6.
  * SSD1306 white color: $3 each.
  * GMMK encoder knob: $10.
  * Clear joystick knob: $5.
