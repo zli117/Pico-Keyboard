@@ -1,6 +1,6 @@
 # Pico-Keyboard
 
-A hot-swappable mechanical keyboard built from scratch with Pi Pico board, with 3D printed case.
+A hot-swappable mechanical keyboard built from scratch with Pi Pico board, and 3D printed case.
 
 # Pictures
 
