@@ -39,6 +39,18 @@ In total per keyboard material cost is roughly $129.57
  * Stabilizers: $16.99 per set.
  * Akko clear translucent keycap: $39.99.
  * Akko blue switch: $9.99 per 45. Used 68, so total $15.10
+ 
+# Build Instructions
+
+## PCB
+PCB is designed with KiCAD 6, and everything is under the [PCB](PCB/) folder. Pre-plotted files that can be uploaded to board factory are in 
+`Gerber.zip` file. However, different factory may have different plotting settings, so it's recommended to replot with KiCad following factory's instruction. The provided one is for JLCPCB. 
+
+## Case
+Case is designed with Fusion 360. The file ends in `.f3z` contains the original Fusion 360 source. My build used SUNLU Clear PLA and is sliced with Cura.
+
+## Firmware
+Firmware is in a separate repo: [PicoMK](https://github.com/zli117/PicoMK). Please see the instruction on how to configure and build the firmware there. 
 
 # PCB Library Licenses
 
