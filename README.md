@@ -1,6 +1,6 @@
 # Pico-Keyboard
 
-A hot-swappable mechanical keyboard built from scratch with Pi Pico board, and 3D printed case.
+A hot-swappable mechanical keyboard built from scratch with Pi Pico board, and 3D printed case, with a very configurable firmware. The firmware is in a separate repo: https://github.com/zli117/PicoMK and can be reused for other RP2040 keyboards.
 
 # Pictures
 
@@ -47,7 +47,7 @@ PCB is designed with KiCAD 6, and everything is under the [PCB](PCB/) folder. Pr
 `Gerber.zip` file. However, different factory may have different plotting settings, so it's recommended to replot with KiCad following factory's instruction. The provided one is for JLCPCB. 
 
 ## Case
-Case is designed with Fusion 360. The file ends in `.f3z` contains the original Fusion 360 source. My build used SUNLU Clear PLA and is sliced with Cura. I put screw holes on the bottom to secure the PCB, but in practice it's not necessary to screw down the PCB once you've installed switches. So those are optional. The screws between plate and bottom are not optional however.
+Case is designed with Fusion 360. The file ends in `.f3z` contains the original Fusion 360 source. My build used SUNLU Clear PLA and is sliced with Cura. I put screw holes on the bottom to secure the PCB, but in practice it's not necessary to screw down the PCB once you've installed switches. So those are optional. The screws between plate and bottom are not optional however.https://github.com/zli117/PicoMK
 
 ## Firmware
 Firmware is in a separate repo: [PicoMK](https://github.com/zli117/PicoMK). Please see the instruction on how to configure and build the firmware there. 
