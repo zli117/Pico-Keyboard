@@ -3,4 +3,5 @@
   (lib (name "JMD0.96C")(type "KiCad")(uri "${KIPRJMOD}/Library/JMD0.96C.pretty")(options "")(descr ""))
   (lib (name "RotaryEncoder")(type "KiCad")(uri "${KIPRJMOD}/Library/RotaryEncoder")(options "")(descr ""))
   (lib (name "COM-09032")(type "KiCad")(uri "${KIPRJMOD}/Library/COM-09032")(options "")(descr ""))
+  (lib (name "RKJXV1224")(type "KiCad")(uri "${KIPRJMOD}/Library/RKJXV1224")(options "")(descr ""))
 )

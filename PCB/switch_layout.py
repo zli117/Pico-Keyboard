@@ -1,8 +1,10 @@
 import pcbnew
 import os
 
-X_OFFSET = 50
-Y_OFFSET = 80
+# X_OFFSET = 50
+# Y_OFFSET = 80
+X_OFFSET = 0
+Y_OFFSET = 0
 KEY_MM = 19.05
 LEFT_PAD = 8.5
 RIGHT_PAD = 8.5
@@ -14,7 +16,7 @@ layout = [
     ['SW_esc', 'SW_tab', 'SW_q', 'SW_w', 'SW_e', 'SW_r', 'SW_t', 'SW_y', 'SW_u', 'SW_i', 'SW_o', 'SW_p', 'SW_[', 'SW_]', 'SW_\\'],
     ['SW_del', 'SW_caps', 'SW_a', 'SW_s', 'SW_d', 'SW_f', 'SW_g', 'SW_h', 'SW_j', 'SW_k', 'SW_l', 'SW_;', 'SW_\'', 'SW_enter'],
     ['SW_ins', 'SW_shift', 'SW_z', 'SW_x', 'SW_c', 'SW_v', 'SW_b', 'SW_n', 'SW_m', 'SW_,', 'SW_.', 'SW_/', 'SW_r_shift'],
-    ['SW_ctrl', 'SW_super', 'SW_alt', 'SW_space', 'SW_fn1', 'SW_fn2', 'SW_left', 'SW_down', 'SW_up', 'SW_right'],
+    ['SW_fn1', 'SW_ctrl', 'SW_super', 'SW_alt', 'SW_space', 'SW_fn2', 'SW_left', 'SW_down', 'SW_up', 'SW_right'],
     ['SW_m_left', 'SW_m_right'],
 ]
 
@@ -135,11 +137,11 @@ pico.SetPosition(pcbnew.wxPointMM(X_OFFSET + 26, y))  # Length of pico is 52
 
 # Place the screen
 
-x, y = joy_stick.GetPosition()
+x, y = pico.GetPosition()
 x = pcbnew.ToMM(x)
 y = pcbnew.ToMM(y)
 screen = pcb.FindFootprintByReference('J1')
-screen.SetPosition(pcbnew.wxPointMM(x - 60, y))
+screen.SetPosition(pcbnew.wxPointMM(x + 50, y + 2))
 
 # Add edge cut border lines
 
