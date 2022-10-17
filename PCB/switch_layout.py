@@ -17,7 +17,7 @@ layout = [
     ['SW_del', 'SW_caps', 'SW_a', 'SW_s', 'SW_d', 'SW_f', 'SW_g', 'SW_h', 'SW_j', 'SW_k', 'SW_l', 'SW_;', 'SW_\'', 'SW_enter'],
     ['SW_ins', 'SW_shift', 'SW_z', 'SW_x', 'SW_c', 'SW_v', 'SW_b', 'SW_n', 'SW_m', 'SW_,', 'SW_.', 'SW_/', 'SW_r_shift'],
     ['SW_fn1', 'SW_ctrl', 'SW_super', 'SW_alt', 'SW_space', 'SW_fn2', 'SW_left', 'SW_down', 'SW_up', 'SW_right'],
-    ['SW_m_left', 'SW_m_right'],
+    # ['SW_m_left', 'SW_m_right'],
 ]
 
 layout_flatten = sum(layout, [])
@@ -92,10 +92,10 @@ joy_stick = pcb.FindFootprintByReference('U1')
 x, y = name_to_xy['SW_space']
 y += 26
 joy_stick.SetPosition(pcbnew.wxPointMM(x, y))
-name_to_footprint['SW_m_left'].SetPosition(pcbnew.wxPointMM(x - 25, y))
-name_to_xy['SW_m_left'] = (x - 25, y)
-name_to_footprint['SW_m_right'].SetPosition(pcbnew.wxPointMM(x + 25, y))
-name_to_xy['SW_m_right'] = (x + 25, y)
+# name_to_footprint['SW_m_left'].SetPosition(pcbnew.wxPointMM(x - 25, y))
+# name_to_xy['SW_m_left'] = (x - 25, y)
+# name_to_footprint['SW_m_right'].SetPosition(pcbnew.wxPointMM(x + 25, y))
+# name_to_xy['SW_m_right'] = (x + 25, y)
 
 # Place the diodes
 

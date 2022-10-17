@@ -730,10 +730,6 @@
         )
       )
       (symbol "RKJXV1224_1_1"
-        (pin passive line (at 11.43 10.16 180) (length 5)
-          (name "SEL+" (effects (font (size 1.27 1.27))))
-          (number "A1" (effects (font (size 1.27 1.27))))
-        )
         (pin passive line (at 11.43 -8.89 180) (length 5)
           (name "V+" (effects (font (size 1.27 1.27))))
           (number "A11" (effects (font (size 1.27 1.27))))
@@ -746,10 +742,6 @@
           (name "V-" (effects (font (size 1.27 1.27))))
           (number "A13" (effects (font (size 1.27 1.27))))
         )
-        (pin passive line (at 11.43 7.62 180) (length 5)
-          (name "SEL-" (effects (font (size 1.27 1.27))))
-          (number "B1" (effects (font (size 1.27 1.27))))
-        )
         (pin passive line (at 11.43 1.27 180) (length 5)
           (name "H+" (effects (font (size 1.27 1.27))))
           (number "B11" (effects (font (size 1.27 1.27))))
@@ -761,6 +753,14 @@
         (pin passive line (at 11.43 -1.27 180) (length 5)
           (name "H-" (effects (font (size 1.27 1.27))))
           (number "B13" (effects (font (size 1.27 1.27))))
+        )
+        (pin passive line (at 11.43 10.16 180) (length 5)
+          (name "SEL+" (effects (font (size 1.27 1.27))))
+          (number "C1" (effects (font (size 1.27 1.27))))
+        )
+        (pin passive line (at 11.43 7.62 180) (length 5)
+          (name "SEL-" (effects (font (size 1.27 1.27))))
+          (number "D1" (effects (font (size 1.27 1.27))))
         )
       )
     )
@@ -2221,20 +2221,20 @@
     (uuid b1fdc5f7-c90b-4888-9648-3bc1aa991ff5)
     (property "Reference" "U1" (id 0) (at 62.3208 97.9424 0))
     (property "Value" "RKJXV1224" (id 1) (at 62.3208 100.4824 0))
-    (property "Footprint" "RKJXV1224:RKJXV122400R" (id 2) (at 62.2808 115.824 0)
+    (property "Footprint" "RKJXV1224:RKJXV122400R_COM09032" (id 2) (at 62.2808 115.824 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Datasheet" "" (id 3) (at 62.2808 115.824 0)
       (effects (font (size 1.27 1.27)) hide)
     )
-    (pin "A1" (uuid d72007c3-66d7-4a16-ab7f-e529242bf52f))
     (pin "A11" (uuid dc54df92-8973-47d5-a89a-556b2608e0fd))
     (pin "A12" (uuid b0722a60-2c34-4083-8bb8-0b156b4c9a18))
     (pin "A13" (uuid 038377c7-516a-42e7-84b6-f24ba97ea01d))
-    (pin "B1" (uuid 59f3ae4d-a5db-4522-b290-33a62a9c6e6b))
     (pin "B11" (uuid 013fe6ab-7310-4c0d-9887-bbdc1870d978))
     (pin "B12" (uuid 1307a4e3-2b9d-4460-89e6-1afceb134cbd))
     (pin "B13" (uuid b6bd9010-433d-47c7-b021-6775b3203dc4))
+    (pin "C1" (uuid 8f88ab8b-20ef-45b2-8c84-ea290d33698e))
+    (pin "D1" (uuid 11b15e05-d69c-4ad0-84b1-f00522fe3984))
   )
 
   (symbol (lib_id "power:+3.3V") (at 245.618 61.722 0) (unit 1)
@@ -2574,9 +2574,6 @@
     (path "/93eb0ca5-32f0-4914-ab02-ab34a84786ac/b30aaee2-f4bf-4542-9fe0-51c7968df0c4"
       (reference "D25") (unit 1) (value "D") (footprint "Diode_THT:D_DO-35_SOD27_P7.62mm_Horizontal")
     )
-    (path "/93eb0ca5-32f0-4914-ab02-ab34a84786ac/13828d37-1d60-434b-aca8-e63c25b6f448"
-      (reference "D26") (unit 1) (value "D") (footprint "Diode_THT:D_DO-35_SOD27_P7.62mm_Horizontal")
-    )
     (path "/93eb0ca5-32f0-4914-ab02-ab34a84786ac/c7739ee3-0359-4276-854b-62866e34bdb0"
       (reference "D27") (unit 1) (value "D") (footprint "Diode_THT:D_DO-35_SOD27_P7.62mm_Horizontal")
     )
@@ -2615,9 +2612,6 @@
     )
     (path "/93eb0ca5-32f0-4914-ab02-ab34a84786ac/084f207a-1097-4748-9b74-71e3716e77db"
       (reference "D39") (unit 1) (value "D") (footprint "Diode_THT:D_DO-35_SOD27_P7.62mm_Horizontal")
-    )
-    (path "/93eb0ca5-32f0-4914-ab02-ab34a84786ac/e1993245-6a37-4b18-b14e-e01ac6d9b933"
-      (reference "D40") (unit 1) (value "D") (footprint "Diode_THT:D_DO-35_SOD27_P7.62mm_Horizontal")
     )
     (path "/93eb0ca5-32f0-4914-ab02-ab34a84786ac/26039e68-7592-4888-8dea-472cf9d4a587"
       (reference "D41") (unit 1) (value "D") (footprint "Diode_THT:D_DO-35_SOD27_P7.62mm_Horizontal")
@@ -2805,9 +2799,6 @@
     (path "/93eb0ca5-32f0-4914-ab02-ab34a84786ac/fea5d87a-2ef0-4d09-ba35-95ff7a24194e"
       (reference "SW24") (unit 1) (value "SW_c") (footprint "Switch_Keyboard_Hotswap_Kailh:SW_Hotswap_Kailh_MX_1.00u")
     )
-    (path "/93eb0ca5-32f0-4914-ab02-ab34a84786ac/558aaf54-eb25-4a6d-a95d-d4bfda2e0042"
-      (reference "SW25") (unit 1) (value "SW_m_left") (footprint "Switch_Keyboard_Hotswap_Kailh:SW_Hotswap_Kailh_MX_1.00u")
-    )
     (path "/93eb0ca5-32f0-4914-ab02-ab34a84786ac/27fa72d0-710b-494f-b0a1-a76b0e9fdbf0"
       (reference "SW26") (unit 1) (value "SW_4") (footprint "Switch_Keyboard_Hotswap_Kailh:SW_Hotswap_Kailh_MX_1.00u")
     )
@@ -2846,9 +2837,6 @@
     )
     (path "/93eb0ca5-32f0-4914-ab02-ab34a84786ac/9d252529-fec8-499d-8d35-ce00bdaacafc"
       (reference "SW38") (unit 1) (value "SW_n") (footprint "Switch_Keyboard_Hotswap_Kailh:SW_Hotswap_Kailh_MX_1.00u")
-    )
-    (path "/93eb0ca5-32f0-4914-ab02-ab34a84786ac/4c7deccd-ec76-4eb5-9a28-9ad669414d94"
-      (reference "SW39") (unit 1) (value "SW_m_right") (footprint "Switch_Keyboard_Hotswap_Kailh:SW_Hotswap_Kailh_MX_1.00u")
     )
     (path "/93eb0ca5-32f0-4914-ab02-ab34a84786ac/eba617b8-e217-4b0d-8a8e-2e7e77b01c04"
       (reference "SW40") (unit 1) (value "SW_7") (footprint "Switch_Keyboard_Hotswap_Kailh:SW_Hotswap_Kailh_MX_1.00u")
@@ -2941,7 +2929,7 @@
       (reference "SW69") (unit 1) (value "SW_enter") (footprint "Switch_Keyboard_Hotswap_Kailh:SW_Hotswap_Kailh_MX_2.25u")
     )
     (path "/b1fdc5f7-c90b-4888-9648-3bc1aa991ff5"
-      (reference "U1") (unit 1) (value "RKJXV1224") (footprint "RKJXV1224:RKJXV122400R")
+      (reference "U1") (unit 1) (value "RKJXV1224") (footprint "RKJXV1224:RKJXV122400R_COM09032")
     )
     (path "/a7a0813e-659b-4420-880d-3ea9fb1c80b1"
       (reference "U2") (unit 1) (value "Pico") (footprint "MCU_RaspberryPi_and_Boards:RPi_Pico_SMD_TH")
